@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>新增材料</title>
+	<link rel="stylesheet" th:href="@{css/style.css}">
+	</head>
+	<body>
+	<form id="form1" enctype="multipart/form-data" method="post" th:action="@{/materialadd}"> 
+		<ul class="row">
+			<h5>*名称：<input type="text" name="name" id="name"><div data-error="name" style="color:#FF0000"></div></h5>
+			<h5>*编号：<input type="text" name="numbering" id="numbering"><div data-error="numbering" style="color:#FF0000"></div></h5>
+			<h5>*介绍：<input type="text" name="intro" id="intro"></h5>
+	        <h5>*厂家：<input type="text" name="factory" id="factory"><div data-error="factory" style="color:#FF0000"></div></h5>
+			<h5>*品牌：<input type="text" name="brand" id="brand"><div data-error="brand" style="color:#FF0000"></div></h5>
+			<h5>*型号：<input type="text" name="model" id="model"><div data-error="model" style="color:#FF0000"></div></h5>
+			<h5>*技术参数：<input type="text" name="tparameters" id="tparameters"><div data-error="tparameters" style="color:#FF0000"></div></h5>
+			<h5>*单价：<input type="text" name="price" id="price"><div data-error="price" style="color:#FF0000"></div></h5>
+			<h5>*数量：<input type="text" name="quantity" id="quantity"><div data-error="quantity" style="color:#FF0000"></div></h5>
+			<h5>*存放位置：<input type="text" name="slocation" id="slocation"><div data-error="slocation" style="color:#FF0000"></div></h5>
+			<h5 >*照片：<input type="file" name="materialfile"></h5>
+	
+			<h5>*生产日期：<input type="text" name="prtime" id="prtime"><div data-error="prtime" style="color:#FF0000"></div></h5>
+			<h5>*报废日期：<input type="text" name="sctime" id="sctime"><div data-error="sctime" style="color:#FF0000"></div></h5>
+			<h5>*质保日期：<input type="text" name="wactime" id="wactime"><div data-error="wactime" style="color:#FF0000"></div></h5>
+			<h5>*采购渠道：<input type="text" name="prchannels" id="prchannels"><div data-error="prchannels" style="color:#FF0000"></div></h5>
+			<h5>*采购备注：<input type="text" name="chremark" id="chremark"></h5>
+			<h5>*售后服务：<input type="text" name="afterservice" id="afterservice"></h5>
+			<h5>*备注：<input type="text" name="remark" id="remark"></h5>
+		</ul>
+		<ul class="row2" style="position: relative;bottom: 843px; left: 460px;">
+			<h5>*请示件：<input type="button" name="asinstructions" id="asinstructions" value="+"></h5>
+			<h5>*报价单：<input type="button" name="quotes" id="quotes" value="+"></h5>
+			<h5>*合同：<input type="button" name="contract" id="contract" value="+"></h5>
+			<h5>*发货单：<input type="button" name="deliverbill" id="deliverbill" value="+"></h5>
+			<h5>*发票：<input type="button" name="invoice" id="invoice" value="+"></h5>
+			<h5>*收据：<input type="button" name="receipt" id="receipt" value="+"></h5>
+			<h5>*入库单：<input type="button" name="warehousing" id="warehousing" value="+"></h5>
+			<h5>*报销单：<input type="button" name="reimbursement" id="reimbursement" value="+"></h5>
+	<h5>*材料类型
+		<select name="type" id="type">
+		  <option value="电子">电子</option>
+		  <option value="开发板">开发板</option>
+		  <option value="配件">配件</option>
+		  <option value="电池">电池</option>
+		</select>
+	</h5>
+	
+	<input type="hidden" name="status" value="stock">
+	<input type="hidden" name="category" value="material">
+	<input type="hidden" name="id" th:value="${materialid}">
+	<input type="submit" name="submit" value="保存材料信息">
+	<a href="/materialindex">取消</a>
+	</ul>
+	
+<!-- <ul class="row3" style="position: relative;bottom: 1310px; left: 823px;">
+ <div class="hide">
+	<h5>请示件</h5>
+	<h5>*开票单位：<input type="text" name="bills[0].billunit" id="billunit"></h5>
+	<h5>*抬头：<input type="text" name="bills[0].shoppername" id="shoppername" ></h5>
+	<h5>*票据文件：<input type="file" name="bills[0].billfile" id="billfile"><div data-error="billfile" style="color:#FF0000"></div></h5>
+	<h5>*金额：<input type="text" name="bills[0].money" id="money"></h5>
+	<h5>*开票时间：<input type="text" name="bills[0].btime" id="btime"></h5>
+	<input type="hidden" name="bills[0].billtype" value="asinstructions">
+	<input id="mask" type="button" value="完成"/>
+</div>
+
+<div class="hide2">
+	<h5>报价单</h5>
+	<h5>*开票单位：<input type="text" name="bills[1].billunit" id="billunit"></h5>
+	<h5>*抬头：<input type="text" name="bills[1].shoppername" id="shoppername" ></h5>
+	<h5>*票据文件：<input type="file" name="bills[1].billfile" id="billfile"><div data-error="billfile" style="color:#FF0000"></div></h5>
+	<h5>*金额：<input type="text" name="bills[1].money" id="money"></h5>
+	<h5>*开票时间：<input type="text" name="bills[1].btime" id="btime"></h5>
+	<input type="hidden" name="bills[1].billtype" value="quotes">
+	<input id="mask2" type="button" value="完成"/>
+</div>
+
+<div class="hide3">
+	<h5>合同</h5>
+	<h5>*开票单位：<input type="text" name="bills[2].billunit" id="billunit"></h5>
+	<h5>*抬头：<input type="text" name="bills[2].shoppername" id="shoppername" ></h5>
+	<h5>*票据文件：<input type="file" name="bills[2].billfile" id="billfile"><div data-error="billfile" style="color:#FF0000"></div></h5>
+	<h5>*金额：<input type="text" name="bills[2].money" id="money"></h5>
+	<h5>*开票时间：<input type="text" name="bills[2].btime" id="btime"></h5>
+	<input type="hidden" name="bills[2].billtype" value="contract">
+	<input id="mask3" type="button" value="完成"/>
+</div>
+<div class="hide4">
+	<h5>发货单</h5>
+	<h5>*开票单位：<input type="text" name="bills[3].billunit" id="billunit"></h5>
+	<h5>*抬头：<input type="text" name="bills[3].shoppername" id="shoppername" ></h5>
+	<h5>*票据文件：<input type="file" name="bills[3].billfile" id="billfile"><div data-error="billfile" style="color:#FF0000"></div></h5>
+	<h5>*金额：<input type="text" name="bills[3].money" id="money"></h5>
+	<h5>*开票时间：<input type="text" name="bills[3].btime" id="btime"></h5>
+	<input type="hidden" name="bills[3].billtype" value="deliverbill">
+	<input id="mask4" type="button" value="完成"/>
+</div>
+
+<div class="hide5">
+	<h5>发票</h5>
+	<h5>*开票单位：<input type="text" name="bills[4].billunit" id="billunit"></h5>
+	<h5>*抬头：<input type="text" name="bills[4].shoppername" id="shoppername" ></h5>
+	<h5>*票据文件：<input type="file" name="bills[4].billfile" id="billfile"><div data-error="billfile" style="color:#FF0000"></div></h5>
+	<h5>*金额：<input type="text" name="bills[4].money" id="money"></h5>
+	<h5>*开票时间：<input type="text" name="bills[4].btime" id="btime"></h5>
+	<input type="hidden" name="bills[4].billtype" value="invoice">
+	<input id="mask5" type="button" value="完成"/>
+</div>
+
+<div class="hide6">
+	<h5>收据</h5>
+	<h5>*开票单位：<input type="text" name="bills[5].billunit" id="billunit"></h5>
+	<h5>*抬头：<input type="text" name="bills[5].shoppername" id="shoppername" ></h5>
+	<h5>*票据文件：<input type="file" name="bills[5].billfile" id="billfile"><div data-error="billfile" style="color:#FF0000"></div></h5>
+	<h5>*金额：<input type="text" name="bills[5].money" id="money"></h5>
+	<h5>*开票时间：<input type="text" name="bills[5].btime" id="btime"></h5>
+	<input type="hidden" name="bills[5].billtype" value="receipt">
+	<input id="mask6" type="button" value="完成"/>
+</div>
+
+<div class="hide7">
+	<h5>入库单</h5>
+	<h5>*开票单位：<input type="text" name="bills[6].billunit" id="billunit"></h5>
+	<h5>*抬头：<input type="text" name="bills[6].shoppername" id="shoppername" ></h5>
+	<h5>*票据文件：<input type="file" name="bills[6].billfile" id="billfile" ><div data-error="billfile" style="color:#FF0000"></div></h5>
+	<h5>*金额：<input type="text" name="bills[6].money" id="money"></h5>
+	<h5>*开票时间：<input type="text" name="bills[6].btime" id="btime"></h5>
+	<input type="hidden" name="bills[6].billtype" value="warehousing">
+	<input id="mask7" type="button" value="完成"/>
+</div>
+
+<div class="hide8">
+	<h5>报销单</h5>
+	<h5>*开票单位：<input type="text" name="bills[7].billunit" id="billunit"></h5>
+	<h5>*抬头：<input type="text" name="bills[7].shoppername" id="shoppername" ></h5>
+	<h5>*票据文件：<input type="file" name="bills[7].billfile" id="billfile"><div data-error="billfile" style="color:#FF0000"></div></h5>
+	<h5>*金额：<input type="text" name="bills[7].money" id="money"></h5>
+	<h5>*开票时间：<input type="text" name="bills[7].btime" id="btime"></h5>
+	<input type="hidden" name="bills[7].billtype" value="reimbursement">
+	<input id="mask8" type="button" value="完成"/>
+</div>
+</ul> -->
+</form>
+
+
+</body>
+<script th:src="@{js/jquery.min.js}"></script>
+<script th:src="@{js/main.js}"></script>
+<script th:src="@{js/jquery.form.js}"></script>
+</html>

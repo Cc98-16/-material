@@ -1,0 +1,45 @@
+.hide{
+	    display:none;
+}
+.hide2{
+	    display:none;
+}
+.hide3{
+	    display:none;
+}
+.hide4{
+	    display:none;
+}
+.hide5{
+	    display:none;
+}
+.hide6{
+	    display:none;
+}
+.hide7{
+	    display:none;
+}
+.hide8{
+	    display:none;
+}
+.none{
+	    display:block;
+}
+.text{
+	text-align:center;
+	width:50px;
+}
+.text1{
+    width: 155px;
+    height: 200px;
+}
+.row2{
+	position: relative;
+	bottom: 43px;
+	left: 328px;
+}
+.stext{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}

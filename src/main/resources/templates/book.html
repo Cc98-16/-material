@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+<link rel="stylesheet" href="../static/css/base.css" th:href="@{/css/base.css}">
+<link rel="stylesheet" href="../static/css/material.min.css" th:href="@{/css/material.min.css}">
+<link rel="stylesheet" href="../static/css/material-icons.css" th:href="@{/css/material-icons.css}">
+<link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body>
+<form name="borrow" th:action="@{/bookindex}" method="post">
+	<table>
+		<tr>
+			<td><input type="checkbox" name="ids" id="chgAll"/></td>
+			<td><h5>选择</h5></td>
+			<td><h5>书本封面</h5></td>
+	    	<td><h5>书名</h5></td>
+	        <td><h5>作者</h5></td>
+	        <td><h5>介绍</h5></td>
+	        <td><h5>编码</h5></td>
+	        <td><h5>书号</h5></td>
+	        <td><h5>单价</h5></td>
+	        <td><h5>库存</h5></td>
+	        <td><h5>出版社</h5></td>
+	        <td><h5>出版时间</h5></td>
+	        <td><h5>书本类型</h5></td>
+	        <td><h5>书本状态</h5></td>
+	        <td><h5>要借数量</h5></td>
+	    </tr>
+	    <tr th:each="books,row:${ps?.items}">
+	    	<td><input type="checkbox" th:name="id" th:value="${books.id}"></td>
+	    	<td><img th:src="@{/images/__${books?.photo}__}" height="200px" width="250px"></td>
+	    	<td><h5 th:text="${books?.name}"></h5></td>
+	    	<td><h5 th:text="${books?.author}"></h5></td>
+	    	<td><h5 th:text="${books?.intro}"></h5></td>
+	    	<td><h5 th:text="${books?.numbering}"></h5></td>
+	    	<td><h5 th:text="${books?.isbn}"></h5></td>
+	    	<td><h5 th:text="${books?.price}"></h5></td>    	
+	    	<td><h5 th:text="${books?.press}"></h5></td>
+	    	<td><h5 th:text="${books?.pubtime}"></h5></td>
+	    	<td><h5 th:text="${books?.type}"></h5></td>	
+	    	<td><h5 th:if="${books?.status == 'invalid'}">此书下架</h5><h5 th:if="${books?.status == 'lend'}">此书已借出</h5><h5 th:if="${books?.status == 'stock'}">正常借阅</h5></td>
+	    	<td>
+	    	<input type="button" name="minus" id="min" value="-" />
+	    	<input type="text" name="cquantity" id="cquantity" class="text" value="1" />
+	    	<input type="button" name="plus" id="add" value="+" />
+	    	</td>
+	    </tr>
+	    <input type="hidden" name="status" value="lend">
+	    <input type="hidden" name="type" value="out">
+	    <td><h5>计划归还时间:<input type="text" name="srtime"/></h5></td>
+	    <td><input type="button" name="borrow" value="借书"></button></td>
+	</table>
+</form>
+<div th:replace="base :: pagination"></div>
+</body>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+</html>

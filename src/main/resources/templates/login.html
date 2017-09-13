@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+</head>
+<body>
+<form name="login" action="/login" method="post">
+	<h5>账号：<input type="text" id="account" name="account" ><div data-error="account" style="color:#FF0000"></div></h5>
+    <h5>密码：<input type="password" id="password" name="password" ><div data-error="password" style="color:#FF0000"></div></h5>
+    <input type="submit" name="submit" value="登录" />
+    <a href="/register">注册</a>
+</form>
+
+<script th:src="@{js/jquery.min.js}"></script>
+<script th:src="@{js/main.js}"></script>
+<script th:src="@{js/jquery.form.js}"></script>
+</body>
+</html>

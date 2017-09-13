@@ -1,0 +1,11 @@
+<form method="post" th:action="|/access/${accessinfo?.material.id}/${accessinfo?.id}/return|" enctype="multipart/form-data">
+	<td>材料名称<h5 th:text="${accessinfo?.material.name}"></h5></td>
+	<h5>*归还数量：<input type="text" name="aquantity" id="aquantity" th:value="${accessinfo?.apply?.aquantity}"></h5>
+	<h5>*耗材说明：<input type="text" name="reason" id="reason"></h5>
+	<h5>*照片：<input type="file" name="accessfile"></h5>
+	<input type="hidden" name="status" value="Approval">
+	<input type="hidden" name="type" value="in">
+	<input type="hidden" name="operationstatus" value="operationstatus">
+	<input type="submit" name="submit"value="确认归还">
+	<input type="button" name="load_closereturn" value="取消">
+</form>

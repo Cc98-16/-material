@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+<link rel="stylesheet" href="../static/css/base.css" th:href="@{/css/base.css}">
+<link rel="stylesheet" href="../static/css/material.min.css" th:href="@{/css/material.min.css}">
+<link rel="stylesheet" href="../static/css/material-icons.css" th:href="@{/css/material-icons.css}">
+<link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body>
+<div><a href="/index">返回主页</a></div>
+<div><a href="/adoptapply">已批准申请入口</a></div>
+<div id="loadbox"></div>
+<div id="refuseloadbox"></div>
+	<table>
+		<tr>
+			<td><h5>申请人姓名</h5></td>
+			<td><h5>申请材料名称</h5></td>
+			<td><h5>申请材料数量</h5></td>
+			<td><h5>申请材料理由</h5></td>
+			<td><h5>申请材料时间</h5></td>
+			<td><h5>申请类型</h5></td>
+			<td><h5>申请归还照片</h5></td>
+			<td><h5>申请材料状态</h5></td>
+		</tr>
+		<tr th:each="apply,row:${ps?.items}">
+			<td><a><h5 th:text="${apply?.user?.username}"></h5></a></td>
+			<td><h5 th:text="${apply?.material?.name}"></h5></td>
+			<td><h5 th:text="${apply?.aquantity}"></h5></td>
+			<td><h5 th:text="${apply?.reason}"></h5></td>
+			<td><h5 th:text="${#dates.format(apply?.ctime, 'yyyy-MM-dd HH:mm')}"></h5></td>
+			<td>
+			<h5 th:if="${apply?.type == 'out'}" style="color: #00FF00">申请领取</h5>
+			<h5 th:if="${apply?.type == 'in'}" style="color: #FF0000">申请归还</h5>
+			</td>
+			<td><img th:if="${apply?.aphoto != null}" th:src="@{/images/__${apply?.aphoto}__}" height="200px" width="250px"></td>			
+			<td><h5 th:if="${apply?.status == 'Approval'}">待批准</h5><h5 th:if="${apply?.status == 'adopt'}" style="color: #00FF00">已批准</h5><h5 th:if="${apply?.status == 'failure'}" style="color: #FF0000">拒绝申请</h5></td>		
+			<td><a href="javascript:void(0);" style="color: #00FF00" th:data-load="|/apply/${apply?.id}/editagree|" th:if="${apply?.status == 'Approval'}">同意</a></td>
+	        <td><a href="javascript:void(0);" style="color: #FF0000" th:data-refuseload="|/apply/${apply?.id}/editrefuse|" th:if="${apply?.status == 'Approval'}">拒绝</a></td>
+	        <td><h5 th:if="${apply?.status == 'adopt'}">申请者操作确认<a href="javascript:void(0);" style="color: #FF0000">确认</a></h5></td>
+	        <!-- <td><h5 th:if="${apply?.access?.photo != null}">已上传照片<a>查看照片</a></h5></td> -->
+	      <!--   <td><h5 th:if="${apply?.access?.photo == null && apply?.status == 'adopt' && apply?.type == 'out'}">未上传图片</h5></td> -->
+		</tr>
+	</table>
+	<div th:replace="base :: pagination"></div>
+</body>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/jquery.form.js}"></script>
+</html>

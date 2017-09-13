@@ -1,0 +1,33 @@
+<form method="post" th:action="|/material/${material?.id}/editmerge|" enctype="multipart/form-data">
+	<h5>*名称：<input type="text" name="name" id="name" th:value="${material?.name}"><div data-error="name" style="color:#FF0000"></div></h5>
+	<h5>*编号：<input type="text" name="numbering" id="numbering" th:value="${material?.numbering}"><div data-error="numbering" style="color:#FF0000"></div></h5>
+	<h5>*介绍：<input type="text" name="intro" id="intro" class="text1" th:value="${material?.intro}"></h5>
+	<h5>*厂家：<input type="text" name="factory" id="factory" th:value="${material?.factory}"><div data-error="factory" style="color:#FF0000"></div></h5>
+	<h5>*品牌：<input type="text" name="brand" id="brand" th:value="${material?.brand}"><div data-error="brand" style="color:#FF0000"></div></h5>
+	<h5>*型号：<input type="text" name="model" id="model" th:value="${material?.model}"><div data-error="model" style="color:#FF0000"></div></h5>
+	<h5>*技术参数：<input type="text" name="tparameters" id="tparameters" th:value="${material?.tparameters}"><div data-error="tparameters" style="color:#FF0000"></div></h5>
+	<h5>*单价：<input type="text" name="price" id="price" th:value="${material?.price}"><div data-error="price" style="color:#FF0000"></div></h5>
+	<h5>*数量：<input type="text" name="quantity" id="quantity" th:value="${material?.quantity}"><div data-error="quantity" style="color:#FF0000"></div></h5>
+	<h5>*存放位置：<input type="text" name="slocation" id="slocation" th:value="${material?.slocation}"><div data-error="slocation" style="color:#FF0000"></div></h5>
+	
+	<h5>*照片：<input type="file" name="materialfile"></h5>
+	
+	<h5>*生产日期：<input type="text" name="prtime" id="prtime" th:value="${material?.prtime}"><div data-error="prtime" style="color:#FF0000"></div></h5>
+	<h5>*报废日期：<input type="text" name="sctime" id="sctime" th:value="${material?.sctime}"><div data-error="sctime" style="color:#FF0000"></div></h5>
+	<h5>*质保日期：<input type="text" name="wactime" id="wactime" th:value="${material?.wactime}"><div data-error="wactime" style="color:#FF0000"></div></h5>
+	<h5>*采购渠道：<input type="text" name="prchannels" id="prchannels" th:value="${material?.prchannels}"><div data-error="prchannels" style="color:#FF0000"></div></h5>
+	<h5>*采购备注：<input type="text" name="chremark" id="chremark" th:value="${material?.chremark}"></h5>
+	<h5>*售后服务：<input type="text" name="afterservice" id="afterservice" th:value="${material?.afterservice}"></h5>
+	<h5>*备注：<input type="text" name="remark" id="remark" th:value="${material?.remark}"></h5>
+	
+	<h5>*材料类型
+		<select name="type" id="type">
+		  <option value="电子" th:selected="${material?.type == '电子'} ? 'selected'">电子</option>
+		  <option value="开发板" th:selected="${merge?.type == '开发板'} ? 'selected'">开发板</option>
+		  <option value="配件 " th:selected="${merge?.type == '配件'} ? 'selected'">配件</option>
+		  <option value="电池" th:selected="${merge?.type == '电池'} ? 'selected'">电池</option>
+		</select>
+	</h5>
+	<input type="submit" name="submit"value="确认修改">
+	<input type="button" name="load_close" value="取消">
+</form>

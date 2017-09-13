@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form method="post" th:action="@{/register}">
+<h5>*账号：<input type="text" name="account" id="account"><div data-error="account" style="color:#FF0000"></div></h5>
+<h5>*姓名：<input type="text" name="username" id="username"><div data-error="username" style="color:#FF0000"></div></h5>
+<h5>*学号： <input type="text" name="studentid" id="studentid"><div data-error="studentid" style="color:#FF0000"></div></h5>
+<h5>*密码：<input type="text" name="password" id="password"><div data-error="password" style="color:#FF0000"></div></h5>
+<h5>*手机： <input type="text" name="phone" id="phone"><div data-error="phone" style="color:#FF0000"></div></h5>
+<h5>*邮箱：<input type="text" name="email" id="email"><div data-error="email" style="color:#FF0000"></div></h5>
+<h5>*班级： <input type="text" name="classes" id="classes"><div data-error="classes" style="color:#FF0000"></div></h5>
+<input type="submit" name="submit" id="submit1" data-btn value="提交">
+<a href="/login">返回登录页面</a>
+</form>
+</body>
+<script th:src="@{js/jquery.min.js}"></script>
+<script th:src="@{js/main.js}"></script>
+<script th:src="@{js/jquery.form.js}"></script>
+</html>

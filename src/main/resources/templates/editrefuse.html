@@ -1,0 +1,6 @@
+<form method="post" th:action="|/apply/${apply?.material.id}/${apply?.id}/in|" enctype="multipart/form-data">
+	<h5>*填写拒绝理由：<input type="text" name="rreason" id="rreason"><div data-error="rreason" style="color:#FF0000"></div></h5>
+	<input type="hidden" name="status" value="failure">
+	<input type="submit" name="submit"value="确认拒绝">
+	<input type="button" name="load_refuseclose" value="取消">
+</form>

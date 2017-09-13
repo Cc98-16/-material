@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+<link rel="stylesheet" href="../static/css/base.css" th:href="@{/css/base.css}">
+<link rel="stylesheet" href="../static/css/material.min.css" th:href="@{/css/material.min.css}">
+<link rel="stylesheet" href="../static/css/material-icons.css" th:href="@{/css/material-icons.css}">
+<link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body>
+<div><a th:href="|/user/${session?.seuser?.id}/userinfo|">返回个人中心</a></div>
+<h5>物品名称：<i th:text="${accessinfo?.material?.name}"></i></h5>
+物品照片<img th:src="@{/images/__${accessinfo?.photo}__}" height="200px" width="250px">
+</body>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/jquery.form.js}"></script>
+</html>

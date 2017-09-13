@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+<link rel="stylesheet" href="../static/css/base.css" th:href="@{/css/base.css}">
+<link rel="stylesheet" href="../static/css/material.min.css" th:href="@{/css/material.min.css}">
+<link rel="stylesheet" href="../static/css/material-icons.css" th:href="@{/css/material-icons.css}">
+</head>
+<body>
+<div><a href="/index">返回主页</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/apply">申请查询</a></div>
+<form name="form" method="get" th:action="userinfo">
+	<input type="text" id="booksfind" name="keyword" autofocus>
+	<input type="submit" value="搜索">
+</form>
+<form method="post" th:action="|/user/${usermerge?.id}/usermerge|">
+
+	<h5>*学号：<input type="text" name="studentid" id="studentid" th:value="${usermerge?.studentid}"><div data-error="studentid" style="color:#FF0000"></div></h5>
+	<h5>*姓名：<input type="text" name="username" id="username" th:value="${usermerge?.username}"><div data-error="username" style="color:#FF0000"></div></h5>
+	<h5>*电话：<input type="text" name="phone" id="phone" th:value="${usermerge?.phone}"><div data-error="phone" style="color:#FF0000"></div></h5>
+	<h5>*邮箱：<input type="text" name="email" id="email" th:value="${usermerge?.email}"><div data-error="email" style="color:#FF0000"></div></h5>
+	<h5>*班级：<input type="text" name="classes" id="classes" th:value="${usermerge?.classes}"><div data-error="classes" style="color:#FF0000"></div></h5>
+	<h5>*密码：<input type="text" name="password" id="password" th:value="${usermerge?.password}"><div data-error="password" style="color:#FF0000"></div></h5>
+	
+	<input type="button" name="submit" id="submit1" value="修改个人信息" data-btn>
+	<a href="/index">取消</a>
+</form>
+<div id="returnloadbox"></div>
+<form enctype="multipart/form-data" method="post" th:action="@{/accessfile}"> 
+<table>
+	<tr>
+		<td>材料</td>
+		<td>材料编号</td>
+		<td>操作数量</td>
+		<td>操作时间</td>
+		<td>操作方式</td>
+		<td>申请理由</td>
+		<td>订单状态</td>
+	</tr>
+	<tr th:each="access,status:${ps?.items}">
+		<td><h5 th:text="${access?.material?.name}"></h5></td>
+		<td><h5 th:text="${access?.material?.numbering}"></h5></td>
+		<td><h5 th:text="${access?.apply?.aquantity}"></h5></td>
+		<td><h5 th:text="${#dates.format(access?.ctime, 'yyyy-MM-dd HH:mm')}"></h5></td>
+		<td><h5 th:if="${access?.apply?.type == 'out'}">领取</h5><h5 th:if="${access?.apply?.type == 'in'}">归还</h5>
+		<td><h5 th:text="${access?.apply?.reason}"></h5></td>
+		<td><input type="button" id="button1" th:if="${access?.operationstatus == null && access?.apply?.type == 'out'}" th:data-returnload="|/access/${access?.id}/editreturn|" value="归还"></button></td>
+		<td>
+			<h5 th:if="${access?.photo == null && access?.apply?.status == 'adopt' && access?.apply?.type == 'out'}">请上传照片<input type="file" name="accessfile" /><input type="hidden" name="id" th:value="${access?.id}"><input type="submit" name="submit" value="上传"></h5>
+			<a th:href="|/access/${access?.id}/vphoto|" style="color: #00FF00" th:if="${access?.photo != null}" >查看照片</a>
+		</td>
+		<td><h5 th:if="${access?.photo != null}">重新上传照片<input type="file" name="accessfile" /><input type="hidden" name="id" th:value="${access?.id}"><input type="submit" name="submit" value="上传"></h5>
+		</td>
+	</tr>
+</table>
+<div th:replace="base :: pagination"></div>
+</form>
+</body>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/jquery.form.js}"></script>
+</html>

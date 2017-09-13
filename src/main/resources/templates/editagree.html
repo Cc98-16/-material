@@ -1,0 +1,8 @@
+<form method="post" th:action="|/apply/${apply?.material.id}/${apply?.id}/${apply?.user?.id}/out|" enctype="multipart/form-data">
+	<h5>*申请通过码：<input type="text" name="acode" id="acode"><div data-error="acode" style="color:#FF0000"></div></h5>
+	<h5>*操作地点：<input type="text" name="pplace" id="pplace"><div data-error="pplace" style="color:#FF0000"></div></h5>
+	<h5>*要求执行时间：<input type="text" name="rrtime" id="rrtime"><div data-error="rrtime" style="color:#FF0000"></div></h5>	
+	<input type="hidden" name="status" value="adopt">
+	<input type="submit" name="submit"value="确认同意">
+	<input type="button" name="load_close" value="取消">
+</form>

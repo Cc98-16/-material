@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+<link rel="stylesheet" href="../static/css/base.css" th:href="@{/css/base.css}">
+<link rel="stylesheet" href="../static/css/material.min.css" th:href="@{/css/material.min.css}">
+<link rel="stylesheet" href="../static/css/material-icons.css" th:href="@{/css/material-icons.css}">
+<link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body>
+<a href="/bookadd">新增图书</a>&nbsp;&nbsp;&nbsp;<a href="/materialadd">新增材料</a>&nbsp;&nbsp;&nbsp;<a href="/index">返回主页</a>
+<div id="loadbox"></div>
+<table>
+	<tr>
+		<td><h5>材料照片</h5></td>
+    	<td><h5>名称</h5></td>
+    	<td><h5>型号</h5></td>
+    	<td><h5>技术参数</h5></td>
+        <td><h5>介绍</h5></td>
+        <td><h5>编码</h5></td>
+        <td><h5>单价</h5></td>
+        <td><h5>库存</h5></td>
+        <td><h5>类型</h5></td>
+        <td><h5>添加时间</h5></td>
+        <td><h5>备注</h5></td>
+    </tr>
+    <tr th:each="material,status:${ps?.items}">
+    	<td><img th:src="@{/images/__${material?.photo}__}" height="200px" width="250px"></td>
+    	<td><h5 th:text="${material?.name}"></h5></td>
+    	<td><h5 th:text="${material?.model}"></h5></td>
+    	<td><h5 th:text="${material?.tparameters}" class="stext"></h5></td>
+    	<td><h5 th:text="${material?.intro}"></h5></td>
+    	<td><h5 th:text="${material?.numbering}"></h5></td>
+    	<td><h5 th:text="${material?.price}"></h5></td>    	
+    	<td><h5 th:text="${material?.quantity}"></h5></td>
+    	<td><h5 th:text="${material?.type}"></h5></td>	
+    	<td><h5 th:text="${#dates.format(material?.ctime, 'yyyy-MM-dd HH:mm')}"></h5></td>
+        <td><h5 th:if="${material?.status == 'invalid'}">下架</h5></td>
+        <td><a href="javascript:void(0);" th:if="${material?.status == 'invalid'}" th:data-shelvesid="${material?.id}">重新上架</a></td>
+        <td><a href="javascript:void(0);" th:if="${material?.status != 'invalid'}"  class="red" th:data-id="${material?.id}">下架</a></td>
+        <td><a href="javascript:void(0);" th:if="${material?.status != 'invalid'}" class="red" th:data-load="|material/${material?.id}/editmerge|" id="merge">修改</a></td>
+    </tr>
+</table>
+<div th:replace="base :: pagination"></div>
+</body>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/jquery.form.js}"></script>
+</html>
