@@ -39,6 +39,7 @@ public class Material implements Serializable{
 	private String model;			//型号
 	private String tparameters;		//技术参数，JSON
 	private Integer quantity;		//数量
+	private String unit;			//单位
 	private String type;			//类型
 	private String slocation;		//存放地点
 	private String photo;	//照片
@@ -204,6 +205,14 @@ public class Material implements Serializable{
 
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
+	}
+	
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
 	}
 
 	public String getType() {

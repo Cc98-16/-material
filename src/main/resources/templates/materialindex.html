@@ -22,6 +22,7 @@
         <td><h5>编码</h5></td>
         <td><h5>单价</h5></td>
         <td><h5>库存</h5></td>
+        <td><h5>单位</h5></td>
         <td><h5>类型</h5></td>
         <td><h5>添加时间</h5></td>
         <td><h5>备注</h5></td>
@@ -35,6 +36,7 @@
     	<td><h5 th:text="${material?.numbering}"></h5></td>
     	<td><h5 th:text="${material?.price}"></h5></td>    	
     	<td><h5 th:text="${material?.quantity}"></h5></td>
+    	<td><h5 th:text="${material?.unit}"></h5></td>
     	<td><h5 th:text="${material?.type}"></h5></td>	
     	<td><h5 th:text="${#dates.format(material?.ctime, 'yyyy-MM-dd HH:mm')}"></h5></td>
         <td><h5 th:if="${material?.status == 'invalid'}">下架</h5></td>

@@ -24,6 +24,7 @@
 	        <td><h5>编码</h5></td>
 	        <td><h5>单价</h5></td>
 	        <td><h5>库存</h5></td>
+	        <td><h5>单位</h5></td>
 	        <td><h5>类型</h5></td>
 	        <td><h5>状态</h5></td>
 	        <td><h5>要借数量</h5></td>
@@ -38,6 +39,7 @@
 	    	<td><h5 th:text="${material?.numbering}"></h5></td>
 	    	<td><h5 th:text="${material?.price}"></h5></td>    	
 	    	<td><h5 th:text="${material?.quantity}"></h5></td>
+	    	<td><h5 th:text="${material?.unit}"></h5></td>
 	    	<td><h5 th:text="${material?.type}"></h5></td>	
 	    	<td><h5 th:if="${material?.status == 'invalid'}">材料已下架</h5><h5 th:if="${material?.quantity == 0}">材料已借空</h5><h5 th:if="${material?.quantity != 0}">正常</h5></td>
 	    	<td>

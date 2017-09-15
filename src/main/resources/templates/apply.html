@@ -34,7 +34,7 @@
 			<h5 th:if="${apply?.status == 'adopt'}" style="color: #00FF00">成功。
 			操作地点：<i th:text="${apply?.applicationcode?.place}"></i>
 			申请编号：<i th:text="${apply?.applicationcode?.code}"></i>
-			要求归还时间：<i th:text="${apply?.applicationcode?.rrtime}"></i></h5>
+			要求执行时间：<i th:text="${apply?.applicationcode?.rrtime}"></i></h5>
 			<h5 th:if="${apply?.status == 'failure'}" style="color: #FF0000">失败。
 			拒绝理由：<i th:text="${apply?.access?.rreason}"></i>
 			</h5>

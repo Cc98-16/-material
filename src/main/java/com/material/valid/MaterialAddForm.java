@@ -69,6 +69,8 @@ public class MaterialAddForm {
 	
 	private String status;			//状态
 	
+	private String unit;			//单位
+	
 	private List<BillAddForm> bills = new ArrayList<BillAddForm>();
 
 	public String getId() {
@@ -245,6 +247,14 @@ public class MaterialAddForm {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
 	}
 
 	public List<BillAddForm> getBills() {
