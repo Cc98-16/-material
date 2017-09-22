@@ -7,15 +7,15 @@
 	</head>
 	<body>
 	<form id="form1" enctype="multipart/form-data" method="post" th:action="@{/materialadd}"> 
-		<ul class="row">
+<!-- 		<ul class="row"> -->
 			<h5>*名称：<input type="text" name="name" id="name"><div data-error="name" style="color:#FF0000"></div></h5>
 			<h5>*编号：<input type="text" name="numbering" id="numbering"><div data-error="numbering" style="color:#FF0000"></div></h5>
-			<h5>*介绍：<input type="text" name="intro" id="intro"></h5>
-	        <h5>*厂家：<input type="text" name="factory" id="factory"><div data-error="factory" style="color:#FF0000"></div></h5>
-			<h5>*品牌：<input type="text" name="brand" id="brand"><div data-error="brand" style="color:#FF0000"></div></h5>
+<!-- 			<h5>*介绍：<input type="text" name="intro" id="intro"></h5> -->
+<!-- 	        <h5>*厂家：<input type="text" name="factory" id="factory"><div data-error="factory" style="color:#FF0000"></div></h5> -->
+<!-- 			<h5>*品牌：<input type="text" name="brand" id="brand"><div data-error="brand" style="color:#FF0000"></div></h5> -->
 			<h5>*型号：<input type="text" name="model" id="model"><div data-error="model" style="color:#FF0000"></div></h5>
-			<h5>*技术参数：<input type="text" name="tparameters" id="tparameters"><div data-error="tparameters" style="color:#FF0000"></div></h5>
-			<h5>*单价：<input type="text" name="price" id="price"><div data-error="price" style="color:#FF0000"></div></h5>
+<!-- 			<h5>*技术参数：<input type="text" name="tparameters" id="tparameters"><div data-error="tparameters" style="color:#FF0000"></div></h5> -->
+<!-- 			<h5>*单价：<input type="text" name="price" id="price"><div data-error="price" style="color:#FF0000"></div></h5> -->
 			<h5>*数量：<input type="text" name="quantity" id="quantity"><div data-error="quantity" style="color:#FF0000"></div></h5>
 			<h5>*单位
 				<select name=unit id="unit">
@@ -27,25 +27,25 @@
 				</select>
 			</h5>
 			<h5>*存放位置：<input type="text" name="slocation" id="slocation"><div data-error="slocation" style="color:#FF0000"></div></h5>
-			<h5 >*照片：<input type="file" name="materialfile"></h5>
+<!-- 			<h5 >*照片：<input type="file" name="materialfile"></h5> -->
 	
-			<h5>*生产日期：<input type="text" name="prtime" id="prtime"><div data-error="prtime" style="color:#FF0000"></div></h5>
-			<h5>*报废日期：<input type="text" name="sctime" id="sctime"><div data-error="sctime" style="color:#FF0000"></div></h5>
-			<h5>*质保日期：<input type="text" name="wactime" id="wactime"><div data-error="wactime" style="color:#FF0000"></div></h5>
-			<h5>*采购渠道：<input type="text" name="prchannels" id="prchannels"><div data-error="prchannels" style="color:#FF0000"></div></h5>
-			<h5>*采购备注：<input type="text" name="chremark" id="chremark"></h5>
-			<h5>*售后服务：<input type="text" name="afterservice" id="afterservice"></h5>
+<!--  			<h5>*生产日期：<input type="text" name="prtime" id="prtime"><div data-error="prtime" style="color:#FF0000"></div></h5> -->
+<!-- 			<h5>*报废日期：<input type="text" name="sctime" id="sctime"><div data-error="sctime" style="color:#FF0000"></div></h5> -->
+<!-- 			<h5>*质保日期：<input type="text" name="wactime" id="wactime"><div data-error="wactime" style="color:#FF0000"></div></h5> -->
+<!-- 			<h5>*采购渠道：<input type="text" name="prchannels" id="prchannels"><div data-error="prchannels" style="color:#FF0000"></div></h5> -->
+<!-- 			<h5>*采购备注：<input type="text" name="chremark" id="chremark"></h5> -->
+<!-- 			<h5>*售后服务：<input type="text" name="afterservice" id="afterservice"></h5> -->
 			<h5>*备注：<input type="text" name="remark" id="remark"></h5>
-		</ul>
-		<ul class="row2" style="position: relative;bottom: 843px; left: 460px;">
-			<h5>*请示件：<input type="button" name="asinstructions" id="asinstructions" value="+"></h5>
-			<h5>*报价单：<input type="button" name="quotes" id="quotes" value="+"></h5>
-			<h5>*合同：<input type="button" name="contract" id="contract" value="+"></h5>
-			<h5>*发货单：<input type="button" name="deliverbill" id="deliverbill" value="+"></h5>
-			<h5>*发票：<input type="button" name="invoice" id="invoice" value="+"></h5>
-			<h5>*收据：<input type="button" name="receipt" id="receipt" value="+"></h5>
-			<h5>*入库单：<input type="button" name="warehousing" id="warehousing" value="+"></h5>
-			<h5>*报销单：<input type="button" name="reimbursement" id="reimbursement" value="+"></h5>
+<!-- 		</ul> -->
+<!-- 		<ul class="row2" style="position: relative;bottom: 843px; left: 460px;"> -->
+<!-- 			<h5>*请示件：<input type="button" name="asinstructions" id="asinstructions" value="+"></h5> -->
+<!-- 			<h5>*报价单：<input type="button" name="quotes" id="quotes" value="+"></h5> -->
+<!-- 			<h5>*合同：<input type="button" name="contract" id="contract" value="+"></h5> -->
+<!-- 			<h5>*发货单：<input type="button" name="deliverbill" id="deliverbill" value="+"></h5> -->
+<!-- 			<h5>*发票：<input type="button" name="invoice" id="invoice" value="+"></h5> -->
+<!-- 			<h5>*收据：<input type="button" name="receipt" id="receipt" value="+"></h5> -->
+<!-- 			<h5>*入库单：<input type="button" name="warehousing" id="warehousing" value="+"></h5> -->
+<!-- 			<h5>*报销单：<input type="button" name="reimbursement" id="reimbursement" value="+"></h5> -->
 	<h5>*材料类型
 		<select name="type" id="type">
 		  <option value="电子">电子</option>
@@ -60,7 +60,7 @@
 	<input type="hidden" name="id" th:value="${materialid}">
 	<input type="submit" name="submit" value="保存材料信息">
 	<a href="/materialindex">取消</a>
-	</ul>
+<!-- 	</ul> -->
 	
 <!-- <ul class="row3" style="position: relative;bottom: 1310px; left: 823px;">
  <div class="hide">
