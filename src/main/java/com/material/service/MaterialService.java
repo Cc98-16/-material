@@ -133,14 +133,14 @@ public class MaterialService {
 		}
 	}
 	
-	public void MateriaSava(MaterialAddForm materialAddForm){
+	public void MaterialSava(MaterialAddForm materialAddForm){
 		try {
 			Material material = new Material();
 			material.init();
 			
 			BeanUtils.copyProperties(materialAddForm, material, Material.class);
 
-			material.setPhoto(FileUtils.getFileNameAndSaveFile(materialAddForm.getMaterialfile()));
+//			material.setPhoto(FileUtils.getFileNameAndSaveFile(materialAddForm.getMaterialfile()));
 			
 			materialDao.save(material);
 			

@@ -194,5 +194,25 @@ $(function() {
     $("#mask8").click(function (e) {
         $(".hide8").removeClass("none");
     });
+
+
+	    $(document).on("click", ".in_drowndrop", function() {
+	    		// console.log(11);
+	        $(".more_list").toggle("");
+	    });
+
+    // $(function(){
+    //     $(".in_drowndrop").toggle(
+    //         function(){
+    //             $(this).text("收起选项-");
+    //             $(".more_list").show();
+    //         },
+    //         function(){
+    //             $(this).text("展开选项+");
+    //             $(".more_list").hide();
+    //         }
+    //     )
+    // })
+	  
      
 });

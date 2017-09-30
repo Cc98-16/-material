@@ -24,6 +24,8 @@
 				  <option value="盒">盒</option>
 				  <option value="组">组</option>
 				  <option value="套">套</option>
+				  <option value="架">架</option>
+				  <option value="台">台</option>
 				</select>
 			</h5>
 			<h5>*存放位置：<input type="text" name="slocation" id="slocation"><div data-error="slocation" style="color:#FF0000"></div></h5>
@@ -52,6 +54,15 @@
 		  <option value="开发板">开发板</option>
 		  <option value="配件">配件</option>
 		  <option value="电池">电池</option>
+		  <option value="硬件设备">硬件设备</option>
+		  <option value="成品作品">成品作品</option>
+		  <option value="半成品作品">半成品作品</option>
+		</select>
+	</h5>
+	
+	<h5>*材料种类选择
+		<select name="productid" id="productid" th:each="product,status:${ps?.items}">
+		  <option th:value="${product?.id}" th:text="${product?.name}"></option>
 		</select>
 	</h5>
 	

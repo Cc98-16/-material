@@ -51,6 +51,8 @@ public class Material implements Serializable{
 	private String chremark;		//采购备注
 	private String remark;			//备注
 	
+	private String productid;		//分类ID
+	
 	@OneToMany
 	private Set<Bill> bill = new HashSet<Bill>();
 	
@@ -301,6 +303,14 @@ public class Material implements Serializable{
 
 	public void setBill(Set<Bill> bill) {
 		this.bill = bill;
+	}
+
+	public String getProductid() {
+		return productid;
+	}
+
+	public void setProductid(String productid) {
+		this.productid = productid;
 	}
 	
 }

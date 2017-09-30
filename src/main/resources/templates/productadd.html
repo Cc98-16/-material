@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>新增类别</title>
+<link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body>
+<form id="form1" method="post" th:action="@{/productadd}">
+添加新的材料种类：
+<h5>名称：<input type="text" name="name" id="name"><div data-error="name" style="color:#FF0000"></div></h5>
+<h5>介绍：<input type="text" name="intro" id="intro"><div data-error="intro" style="color:#FF0000"></div></h5>
+<input type="submit" name="submit" value="保存材料种类">
+</form>
+</body>
+<script th:src="@{js/jquery.min.js}"></script>
+<script th:src="@{js/main.js}"></script>
+<script th:src="@{js/jquery.form.js}"></script>
+</html>

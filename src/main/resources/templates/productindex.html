@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+<link rel="stylesheet" href="../static/css/base.css" th:href="@{/css/base.css}">
+<link rel="stylesheet" href="../static/css/material.min.css" th:href="@{/css/material.min.css}">
+<link rel="stylesheet" href="../static/css/material-icons.css" th:href="@{/css/material-icons.css}">
+<link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body>
+<div th:each="product,status:${ps?.items}">材料种类：
+	<div>
+		<span th:text="${product?.name}"></span>&nbsp;&nbsp;&nbsp;<span th:text="${product?.intro}"></span>
+	</div>
+</div>
+
+
+<div th:replace="base :: pagination"></div>
+</body>
+</html>

@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.material.domain.Product;
 import com.material.service.MaterialService;
+import com.material.service.ProductService;
 import com.material.utils.ID;
+import com.material.utils.MyPage;
 import com.material.utils.Result;
 import com.material.valid.BookAddForm;
 import com.material.valid.MaterialAddForm;
@@ -23,8 +26,13 @@ public class MaterialAddController extends BaseController{
 	@Resource
 	private MaterialService materialService;
 	
+	@Resource
+	private ProductService productService;
+	
 	@GetMapping(value = "/materialadd")
 	public String MaterialAdd(Model model){
+		MyPage<Product> product = productService.findAll(keyword, page, pagesize);
+		model.addAttribute("ps",product);
 		model.addAttribute("materialid", ID.uuid());
 		return "materialadd";		
 	}
@@ -34,6 +42,7 @@ public class MaterialAddController extends BaseController{
 		model.addAttribute("materialid", ID.uuid());
 		return "bookadd";
 	}
+	
 	@ResponseBody
 	@PostMapping(value = "/bookadd")
 	public Map<String,Object> BookSava(@Valid BookAddForm bookAddForm){
@@ -44,7 +53,7 @@ public class MaterialAddController extends BaseController{
 	@ResponseBody
 	@PostMapping(value = "/materialadd")
 	public Map<String,Object> MaterialSava(@Valid MaterialAddForm materialAddForm){
-		materialService.MateriaSava(materialAddForm);
+		materialService.MaterialSava(materialAddForm);
 		return Result.toUrl("/materialindex");
 	}
 }

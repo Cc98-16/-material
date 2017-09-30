@@ -45,7 +45,7 @@ public class BaseController {
 	@ModelAttribute
 	public void input_inti(Model model, 
 			@RequestParam(value = "keyword", defaultValue = "", required = false) String keyword,
-			@RequestParam(value = "pagesize", defaultValue = "10", required = false) Integer pagesize,
+			@RequestParam(value = "pagesize", defaultValue = "5", required = false) Integer pagesize,
 			@RequestParam(value = "page", defaultValue = "1", required = false) Integer page){
 		this.keyword = keyword;
 		this.pagesize = pagesize;

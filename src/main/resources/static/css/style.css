@@ -43,3 +43,9 @@
 	text-overflow:ellipsis;
 	white-space: nowrap;
 }
+.in_drowndrop{
+	cursor: pointer;	
+}
+.dis-none{
+	display: none;
+}
