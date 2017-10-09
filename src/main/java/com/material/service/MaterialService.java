@@ -84,6 +84,14 @@ public class MaterialService {
 		}
 	}
 	
+	public MyPage<Material> findAllProductid(String productid,String keyword,int page,int pagesize){
+		try {
+			return materialDao.findAllProductid(productid,keyword,page,pagesize);			
+		} catch (ServiceException e) {
+			throw e;
+		}
+	}
+	
 	public MyPage<Material> findAll(String keyword,int page,int pagesize){
 		try {
 			return materialDao.findAll(keyword,page,pagesize);			

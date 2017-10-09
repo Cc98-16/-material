@@ -12,7 +12,7 @@
 <body>
 <div th:each="product,status:${ps?.items}">材料种类：
 	<div>
-		<span th:text="${product?.name}"></span>&nbsp;&nbsp;&nbsp;<span th:text="${product?.intro}"></span>
+		<a th:href="|/product/${product?.id}/materialinfo|"><h5 th:text="${product?.name}"></h5></a>
 	</div>
 </div>
 

@@ -22,4 +22,5 @@ public class ProductIndexController extends BaseController{
 		model.addAttribute("ps",product);
 		return "productindex";
 	}
+
 }

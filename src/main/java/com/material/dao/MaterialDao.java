@@ -65,6 +65,22 @@ public class MaterialDao extends BaseDao<Material>{
 		}	
 	}
 	
+	public MyPage<Material> findAllProductid(String productid,String keyword,int page,int pagesize){
+		try {
+			DetachedCriteria dc = DetachedCriteria.forClass(Material.class);
+			dc.add(Property.forName("productid").eq(productid));
+			if(StringUtils.isNotBlank(keyword)){
+				Disjunction diskey = Restrictions.disjunction();
+				diskey.add(Property.forName("bookname").like(keyword,MatchMode.ANYWHERE));
+				dc.add(diskey);
+			}
+			return this.findPageByCriteria(dc,pagesize,page);
+		} catch (RuntimeException re) {
+			throw re;
+		}	
+	}
+
+	
 	public MyPage<Material> findAll(String keyword,int page,int pagesize){
 		try {
 			DetachedCriteria dc = DetachedCriteria.forClass(Material.class);

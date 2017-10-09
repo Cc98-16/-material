@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="">
+	<ul>
+		<li><h5>材料照片</h5></li>
+		<li><h5>名称</h5></li>
+		<li><h5>型号</h5></li>
+		<li><h5>介绍</h5></li>
+		<li><h5>编码</h5></li>
+		<li><h5>库存</h5></li>
+		<li><h5>单位</h5></li>
+		<li><h5>类型</h5></li>
+		<li><h5>状态</h5></li>
+	</ul>
+	<ul th:each="material,row:${ps?.items}">
+		<li><img th:src="@{/images/__${material?.photo}__}" height="200px" width="250px"></li>
+		<li><h5 th:text="${material?.name}"></h5></li>
+		<li>
+	</ul>
+</form>
+</body>
+</html>
