@@ -8,12 +8,15 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.material.domain.Material;
+import com.material.domain.Product;
 import com.material.service.AccessService;
 import com.material.service.MaterialService;
+import com.material.service.ProductService;
 import com.material.utils.MyPage;
 import com.material.utils.Result;
 import com.material.valid.ApplyAddForm;
@@ -26,11 +29,13 @@ public class IndexController extends BaseController{
 	@Resource
 	private AccessService accessService;
 	
+	@Resource
+	private ProductService productService;
+	
 	@GetMapping(value="index")
 	public String Index(Model model){
-		String category = "material";
-		MyPage<Material> material = materialService.findAllCategory(category,keyword,page,pagesize);
-		model.addAttribute("ps",material);
+		MyPage<Product> product = productService.findAll(keyword, page, pagesize);
+		model.addAttribute("ps",product);
 		return "index";
 	}
 	
@@ -41,4 +46,10 @@ public class IndexController extends BaseController{
 		return Result.toUrl("/apply");
 	}
 	
+	@GetMapping("/product/{productid}/editpmaterial")
+	public String EditPmaterial(Model model, @PathVariable String productid) {
+		MyPage<Material> material = materialService.findAllProductid(productid, keyword, page, pagesize);
+		model.addAttribute("ps",material);
+		return "editpmaterial";
+	}
 }

@@ -1,0 +1,37 @@
+	<table>
+		<tr>
+			<td><input type="checkbox" name="ids" id="chgAll"/></td>
+			<td><h5>材料照片</h5></td>
+	    	<td><h5>名称</h5></td>
+	    	<td><h5>型号</h5></td>
+	    	<td><h5>技术参数</h5></td>
+	        <td><h5>介绍</h5></td>
+	        <td><h5>编码</h5></td>
+	        <td><h5>单价</h5></td>
+	        <td><h5>库存</h5></td>
+	        <td><h5>单位</h5></td>
+	        <td><h5>类型</h5></td>
+	        <td><h5>状态</h5></td>
+	        <td><h5>要借数量</h5></td>
+	    </tr>
+	    <tr th:each="material,row:${ps?.items}">
+	    	<td><input type="checkbox" th:name="|applys[${row.index}].id|" th:value="${material.id}" th:if="${material?.quantity >= 1 && material?.status != 'invalid'}"></td>
+	    	<td><img th:src="@{/images/__${material?.photo}__}" height="200px" width="250px"></td>
+	    	<td><h5 th:text="${material?.name}"></h5></td>
+	    	<td><h5 th:text="${material?.model}"></h5></td>
+	    	<td><h5 th:text="${material?.tparameters}"></h5></td>
+	    	<td><h5 th:text="${material?.intro}"></h5></td>
+	    	<td><h5 th:text="${material?.numbering}"></h5></td>
+	    	<td><h5 th:text="${material?.price}"></h5></td>    	
+	    	<td><h5 th:text="${material?.quantity}"></h5></td>
+	    	<td><h5 th:text="${material?.unit}"></h5></td>
+	    	<td><h5 th:text="${material?.type}"></h5></td>	
+	    	<!-- <td><h5 th:if="${material?.status == 'invalid'}">材料已下架</h5><h5 th:if="${material?.quantity == 0}">材料已借空</h5><h5 th:if="${material?.quantity != 0}">正常</h5></td> -->
+	    	<td>
+	    	<input type="button" name="minus" id="min" value="-" />
+	    	<input type="text" th:name="|applys[${row.index}].cquantity|" id="cquantity" class="text" th:value="1" />
+	    	<input type="button" name="plus" id="add" value="+" />
+	    	</td>
+	    	<td><a href="javascript:void(0);" th:if="${material?.quantity != 0}" th:data-listid="${material?.id}">加入物品清单</a></td>
+	    </tr>
+	   <table>

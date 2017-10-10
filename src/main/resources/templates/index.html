@@ -13,64 +13,17 @@
 <div><a th:href="|/user/${session?.seuser?.id}/userinfo|">个人中心</a>&nbsp;&nbsp;&nbsp;<a href="/bookindex">书本查询</a>&nbsp;&nbsp;&nbsp;<a href="/materialindex" th:if="${session?.seuser?.authority == 1}">管理</a>&nbsp;&nbsp;&nbsp;<a href="/list">材料清单</a>&nbsp;&nbsp;&nbsp;<a href="/logout">注销</a>
 <a href="/applyadmin" th:if="${session?.seuser?.authority == 1}">管理用户申请</a></div>
 <form name="borrow" th:action="@{/index}" method="post">
-	<table>
-		<tr>
-			<td><input type="checkbox" name="ids" id="chgAll"/></td>
-			<td><h5>材料照片</h5></td>
-	    	<td><h5>名称</h5></td>
-	    	<td><h5>型号</h5></td>
-	    	<td><h5>技术参数</h5></td>
-	        <td><h5>介绍</h5></td>
-	        <td><h5>编码</h5></td>
-	        <td><h5>单价</h5></td>
-	        <td><h5>库存</h5></td>
-	        <td><h5>单位</h5></td>
-	        <td><h5>类型</h5></td>
-	        <td><h5>状态</h5></td>
-	        <td><h5>要借数量</h5></td>
-	    </tr>
-	    <tr th:each="material,row:${ps?.items}">
-	    	<td><input type="checkbox" th:name="|applys[${row.index}].id|" th:value="${material.id}" th:if="${material?.quantity >= 1 && material?.status != 'invalid'}"></td>
-	    	<td><img th:src="@{/images/__${material?.photo}__}" height="200px" width="250px"></td>
-	    	<td><h5 th:text="${material?.name}"></h5></td>
-	    	<td><h5 th:text="${material?.model}"></h5></td>
-	    	<td><h5 th:text="${material?.tparameters}"></h5></td>
-	    	<td><h5 th:text="${material?.intro}"></h5></td>
-	    	<td><h5 th:text="${material?.numbering}"></h5></td>
-	    	<td><h5 th:text="${material?.price}"></h5></td>    	
-	    	<td><h5 th:text="${material?.quantity}"></h5></td>
-	    	<td><h5 th:text="${material?.unit}"></h5></td>
-	    	<td><h5 th:text="${material?.type}"></h5></td>	
-	    	<!-- <td><h5 th:if="${material?.status == 'invalid'}">材料已下架</h5><h5 th:if="${material?.quantity == 0}">材料已借空</h5><h5 th:if="${material?.quantity != 0}">正常</h5></td> -->
-	    	<td>
-	    	<input type="button" name="minus" id="min" value="-" />
-	    	<input type="text" th:name="|applys[${row.index}].cquantity|" id="cquantity" class="text" th:value="1" />
-	    	<input type="button" name="plus" id="add" value="+" />
-	    	</td>
-	    	<td><a href="javascript:void(0);" th:if="${material?.quantity != 0}" th:data-listid="${material?.id}">加入物品清单</a></td>
-	        <td><i class="material-icons in_drowndrop">expand_more</i></td>
-	    </tr>
-	    <tr class="more_list" style="display: none;">
-	    	<td></td>
-	    	<td></td>
-	    	<td><h5>555</h5></td>
-	    	<td><h5>555</h5></td>
-	    	<td><h5>555</h5></td>
-	    	<td><h5>555</h5></td>
-	    	<td><h5>555</h5></td>
-	    	<td><h5>555</h5></td>    	
-	    	<td><h5>555</h5></td>
-	    	<td><h5>555</h5></td>
-	    	<td></td>
-	    	<td><h5>555</h5></td>
-	    	<td><a href="javascript:void(0);" th:if="${material?.quantity != 0}" th:data-listid="${material?.id}">加入物品清单</a></td>
-	    </tr>
+
+	<div class="row" th:each="product,status:${ps?.items}">
+		<h5 class="col-md-1" th:text="${product?.name}"></h5><button type="button" class="col-md-1 material-icons btn-csy" th:data-pmaterialload="|/product/${product?.id}/editpmaterial|">keyboard_arrow_down</button>
+	</div>
+	<div id="pmaterialload"></div>
+
 	    <input type="hidden" name="status" value="Approval">
 	    <input type="hidden" name="type" value="out">
-	    <td><h5>填写申请理由:<input type="text" name="reason"/><div data-error="reason" style="color:#FF0000"></div></h5></td>
-	    <td><h5>计划归还时间:<input type="text" name="srtime"/><div data-error="srtime" style="color:#FF0000"></div></h5></td>
-	    <td><input type="submit" name="submit" value="直接申请借用"></td>
-	    <table>
+	    <h5>填写申请理由:<input type="text" name="reason"/><div data-error="reason" style="color:#FF0000"></div></h5>
+	    <h5>计划归还时间:<input type="text" name="srtime"/><div data-error="srtime" style="color:#FF0000"></div></h5>
+	    <input type="submit" name="submit" value="直接申请借用">
 </form>
 <div th:replace="base :: pagination"></div>
 </body>

@@ -49,3 +49,7 @@
 .dis-none{
 	display: none;
 }
+.btn-csy{
+	width: 2.5em !important;
+	margin-top: 24px;
+}

@@ -17,7 +17,7 @@ $(function() {
 	   	})
     })
     
-	$(document).on("click", ":submit", function(e){
+	$(document).on("click", "[name='submit']", function(e){
 		var form = $(this).parents('form');
 		var url = $(form).attr("action");
 		$("[data-error]").html("");		
@@ -89,6 +89,13 @@ $(function() {
 		});
 	});
 	
+	$(document).on("click","[data-pmaterialload]",function(e){
+		var url = $(this).data("pmaterialload");
+		$("#pmaterialload").load(url, function(){
+			$(this).show("fast");
+		});
+	});
+	
 	$(document).on("click","[data-id]",function(e){
 		e.preventDefault();
 		var id = $(this).data("id");
@@ -125,7 +132,6 @@ $(function() {
 		var listid = $(this).data("listid");
 		var lquantity = $(this).parent().prev().children("#cquantity").val();
 		var type = "out"
-		console.log(type)
 		$.post("/list",{"listid":listid,"type":type,"lquantity":lquantity},function(json){
 			if(json.result == "success")
 				location.reload(true);

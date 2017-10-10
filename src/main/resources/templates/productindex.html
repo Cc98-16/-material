@@ -10,12 +10,12 @@
 <link rel="stylesheet" th:href="@{css/style.css}">
 </head>
 <body>
+
 <div th:each="product,status:${ps?.items}">材料种类：
 	<div>
 		<a th:href="|/product/${product?.id}/materialinfo|"><h5 th:text="${product?.name}"></h5></a>
 	</div>
 </div>
-
 
 <div th:replace="base :: pagination"></div>
 </body>
