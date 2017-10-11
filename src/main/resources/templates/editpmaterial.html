@@ -16,7 +16,7 @@
 	    </tr>
 	    <tr th:each="material,row:${ps?.items}">
 	    	<td><input type="checkbox" th:name="|applys[${row.index}].id|" th:value="${material.id}" th:if="${material?.quantity >= 1 && material?.status != 'invalid'}"></td>
-	    	<td><img th:src="@{/images/__${material?.photo}__}" height="200px" width="250px"></td>
+	    	<td><div style="width:250px;height:250px;"><img th:src="@{/images/__${material?.photo}__}" height="100%" width="100%"></div></td>
 	    	<td><h5 th:text="${material?.name}"></h5></td>
 	    	<td><h5 th:text="${material?.model}"></h5></td>
 	    	<td><h5 th:text="${material?.tparameters}"></h5></td>

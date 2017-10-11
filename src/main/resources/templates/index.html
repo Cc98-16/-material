@@ -15,9 +15,10 @@
 <form name="borrow" th:action="@{/index}" method="post">
 
 	<div class="row" th:each="product,status:${ps?.items}">
-		<h5 class="col-md-1" th:text="${product?.name}"></h5><button type="button" class="col-md-1 material-icons btn-csy" th:data-pmaterialload="|/product/${product?.id}/editpmaterial|">keyboard_arrow_down</button>
+		<div class="col-md-12"><h5 class="col-md-1" th:text="${product?.name}"></h5><button type="button" class="col-md-1 material-icons btn-csy" data-num="0" th:data-pmaterialload="${product?.id}">keyboard_arrow_down</button></div>
+		<div class="col-md-12"><div th:id="${product?.id}"></div></div>
 	</div>
-	<div id="pmaterialload"></div>
+	
 
 	    <input type="hidden" name="status" value="Approval">
 	    <input type="hidden" name="type" value="out">

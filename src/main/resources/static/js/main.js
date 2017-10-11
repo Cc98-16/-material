@@ -90,10 +90,17 @@ $(function() {
 	});
 	
 	$(document).on("click","[data-pmaterialload]",function(e){
-		var url = $(this).data("pmaterialload");
-		$("#pmaterialload").load(url, function(){
-			$(this).show("fast");
-		});
+		var num = $(this).data("num");
+		var id = $(this).data("pmaterialload");
+		var url = "/product/"+id+"/editpmaterial";
+		if(num == 0) {
+			$("#"+id).load(url, function(){
+				$(this).show("fast");
+			});
+		} else {
+			$("#"+id).toggle();
+		}
+		$(this).data("num",num+1);
 	});
 	
 	$(document).on("click","[data-id]",function(e){
