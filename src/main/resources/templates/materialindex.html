@@ -12,6 +12,12 @@
 <body>
 <a href="/bookadd">新增图书</a>&nbsp;&nbsp;&nbsp;<a href="/materialadd">新增材料</a>&nbsp;&nbsp;&nbsp;<a href="/index">返回主页</a>&nbsp;&nbsp;&nbsp;<a href="/productadd">新增材料种类</a>
 &nbsp;&nbsp;&nbsp;<a href="/productindex">显示材料种类</a>
+
+<form name="form" method="get" th:action="materialindex">
+	<input type="text" id="materialfind" name="keyword" autofocus>
+	<input type="submit" value="搜索">
+</form>
+
 <div id="loadbox"></div>
 <table>
 	<tr>

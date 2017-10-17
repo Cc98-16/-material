@@ -12,14 +12,18 @@
 <body>
 <div><a th:href="|/user/${session?.seuser?.id}/userinfo|">个人中心</a>&nbsp;&nbsp;&nbsp;<a href="/bookindex">书本查询</a>&nbsp;&nbsp;&nbsp;<a href="/materialindex" th:if="${session?.seuser?.authority == 1}">管理</a>&nbsp;&nbsp;&nbsp;<a href="/list">材料清单</a>&nbsp;&nbsp;&nbsp;<a href="/logout">注销</a>
 <a href="/applyadmin" th:if="${session?.seuser?.authority == 1}">管理用户申请</a></div>
-<form name="borrow" th:action="@{/index}" method="post">
 
+<form name="form" method="get" th:action="index">
+	<input type="text" id="materialfind" name="keyword" autofocus>
+	<input type="submit" value="搜索">
+</form>
+
+<form name="borrow" th:action="@{/index}" method="post">
 	<div class="row" th:each="product,status:${ps?.items}">
 		<div class="col-md-12"><h5 class="col-md-1" th:text="${product?.name}"></h5><button type="button" class="col-md-1 material-icons btn-csy" data-num="0" th:data-pmaterialload="${product?.id}">keyboard_arrow_down</button></div>
 		<div class="col-md-12"><div th:id="${product?.id}"></div></div>
 	</div>
 	
-
 	    <input type="hidden" name="status" value="Approval">
 	    <input type="hidden" name="type" value="out">
 	    <h5>填写申请理由:<input type="text" name="reason"/><div data-error="reason" style="color:#FF0000"></div></h5>

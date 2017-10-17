@@ -86,7 +86,7 @@ public class MaterialDao extends BaseDao<Material>{
 			DetachedCriteria dc = DetachedCriteria.forClass(Material.class);
 			if(StringUtils.isNotBlank(keyword)){
 				Disjunction diskey = Restrictions.disjunction();
-				diskey.add(Property.forName("bookname").like(keyword,MatchMode.ANYWHERE));
+				diskey.add(Property.forName("name").like(keyword,MatchMode.ANYWHERE));
 				dc.add(diskey);
 			}
 			return this.findPageByCriteria(dc,pagesize,page);

@@ -27,7 +27,7 @@
 		<spring.version>4.3.6.RELEASE</spring.version>
 		<thymeleaf.version>3.0.3.RELEASE</thymeleaf.version>
 		<thymeleaf-layout-dialect.version>2.0.0</thymeleaf-layout-dialect.version>
-		<docker.image.prefix>youkke</docker.image.prefix>
+		<docker.image.prefix>material</docker.image.prefix>
 	</properties>
 
 	<dependencies>
