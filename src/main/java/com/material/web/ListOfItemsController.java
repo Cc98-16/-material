@@ -20,7 +20,7 @@ public class ListOfItemsController extends BaseController{
 	@Resource
 	private ListOfItemsService listOfItemsService;
 	
-	@GetMapping(value = "list")
+	@GetMapping(value = "/list")
 	public String ListIndex(Model model){
 		MyPage<ListOfItems> listOfItems = listOfItemsService.findByBooksUser(seuserid, keyword, page, pagesize);
 		model.addAttribute("ps",listOfItems);

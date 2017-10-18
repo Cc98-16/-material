@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.material.domain.Material;
@@ -32,7 +33,7 @@ public class IndexController extends BaseController{
 	@Resource
 	private ProductService productService;
 	
-	@GetMapping(value="index")
+	@GetMapping(value="/index")
 	public String Index(Model model){
 		MyPage<Product> product = productService.findAll(keyword, page, pagesize);
 		model.addAttribute("ps",product);
@@ -47,9 +48,10 @@ public class IndexController extends BaseController{
 	}
 	
 	@GetMapping("/product/{productid}/editpmaterial")
-	public String EditPmaterial(Model model, @PathVariable String productid) {
+	public String EditPmaterial(Model model, @PathVariable String productid, @RequestParam(name="row") int index) {
 		MyPage<Material> material = materialService.findAllProductid(productid, keyword, page, pagesize);
 		model.addAttribute("ps",material);
+		model.addAttribute("index", index);
 		return "editpmaterial";
 	}
 }

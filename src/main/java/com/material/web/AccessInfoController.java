@@ -30,6 +30,13 @@ public class AccessInfoController extends BaseController{
 	@Resource
 	private ApplyService applyService;
 	
+	/**
+	 * 查看上传的材料图片
+	 * 
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/access/{id}/vphoto")
 	public String Vphoto(Model model,@PathVariable String id){
 		Access access = accessService.findById(seuserid, id);
@@ -37,6 +44,13 @@ public class AccessInfoController extends BaseController{
 		return "vphoto";
 	}
 	
+	/**
+	 * 填写归还材料申请表界面
+	 * 
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/access/{id}/editreturn")
 	public String Edit(Model model, @PathVariable String id) {
 		Access access = accessService.findById(seuserid, id);
@@ -44,6 +58,14 @@ public class AccessInfoController extends BaseController{
 		return "editreturn";
 	}
 	
+	/**
+	 * 提交归还材料申请表
+	 * 
+	 * @param accessReturnForm
+	 * @param id
+	 * @param aid
+	 * @return
+	 */
 	@ResponseBody
 	@PostMapping(value ="/access/{id}/{aid}/return")
 	public Map<String,Object> Accessreturn(@Valid AccessReturnForm accessReturnForm,@PathVariable String id,@PathVariable String aid){
@@ -51,6 +73,15 @@ public class AccessInfoController extends BaseController{
 		return Result.toUrl("/user/{id}/userinfo");	
 	}
 	
+	/**
+	 * 
+	 * 
+	 * @param accessoutForm
+	 * @param id
+	 * @param aid
+	 * @param uid
+	 * @return
+	 */
 	@ResponseBody
 	@PostMapping(value ="/apply/{id}/{aid}/{uid}/out")
 	public Map<String,Object> Accessout(@Valid AccessOutForm accessoutForm,@PathVariable String id,@PathVariable String aid,@PathVariable String uid){

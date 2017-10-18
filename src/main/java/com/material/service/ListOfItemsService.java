@@ -38,7 +38,6 @@ public class ListOfItemsService {
 			if (listOfItems.size() >= 1) {
 				
 				ListOfItems listOf = listOfItemsDao.findById(listOfItems.get(0).getId());
-				System.out.println(listOf.getId());
 
 				listOf.setLquantity(listOf.getLquantity() + lquantity);
 				

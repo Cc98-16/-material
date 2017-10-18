@@ -20,7 +20,7 @@
 
 <form name="borrow" th:action="@{/index}" method="post">
 	<div class="row" th:each="product,status:${ps?.items}">
-		<div class="col-md-12"><h5 class="col-md-1" th:text="${product?.name}"></h5><button type="button" class="col-md-1 material-icons btn-csy" data-num="0" th:data-pmaterialload="${product?.id}">keyboard_arrow_down</button></div>
+		<div class="col-md-12"><h5 class="col-md-1" th:text="${product?.name}"></h5><button type="button" class="col-md-1 material-icons btn-csy" data-num="0" th:data-row="${status.index}" th:data-pmaterialload="${product?.id}">keyboard_arrow_down</button></div>
 		<div class="col-md-12"><div th:id="${product?.id}"></div></div>
 	</div>
 	

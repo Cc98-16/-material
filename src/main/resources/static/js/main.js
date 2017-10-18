@@ -91,8 +91,9 @@ $(function() {
 	
 	$(document).on("click","[data-pmaterialload]",function(e){
 		var num = $(this).data("num");
+		var row = $(this).data("row");
 		var id = $(this).data("pmaterialload");
-		var url = "/product/"+id+"/editpmaterial";
+		var url = "/product/"+id+"/editpmaterial?row="+row;
 		if(num == 0) {
 			$("#"+id).load(url, function(){
 				$(this).show("fast");

@@ -100,30 +100,17 @@ public class AccessService {
 			Apply apply = applyDao.findById(aid);
 			User user = userdao.findById(uid);
 			
-			/*User useroperator = userdao.findById(seuserid);*/
-			
-/*			Access access = new Access();
-			access.init();
-			BeanUtils.copyProperties(accessoutForm, access, Access.class);
-			access.setMaterial(material);
-			access.setApply(apply);
-			access.setUser(user);
-			access.setOperator(useroperator.getUsername());
-			accessDao.save(access);*/
-			
 			Applicationcode applicationCode = new Applicationcode();
 			applicationCode.init();
 			applicationCode.setStatus(status);
 			applicationCode.setCode(accessoutForm.getAcode());
 			applicationCode.setPlace(accessoutForm.getPplace());
 			applicationCode.setRrtime(accessoutForm.getRrtime());
-/*			applicationCode.setAccess(access);*/
 			applicationCode.setUser(user);
 			applicationCode.setMaterial(material);
 			
 			applicationCodeDao.save(applicationCode);
 			
-/*			apply.setAccess(access);*/
 			apply.setApplicationcode(applicationCode);
 			apply.setStatus(accessoutForm.getStatus());
 			applyDao.merge(apply);
@@ -183,39 +170,6 @@ public class AccessService {
 		}
 	}
 	
-/*	public void AccessIn(AccessMergeInForm accessMergeInForm,Confirm borrowForm,String id,String seuserid,String aid){
-		try {
-			
-			Access accessid = accessDao.findById(aid);
-			
-			accessid.setOperationstatus(accessMergeInForm.getOperationstatus());
-			accessDao.merge(accessid);
-			
-			User user = userdao.findById(seuserid);
-			Material material = materialDao.findById(id);
-			
-			material.setStatus(borrowForm.getStatus());
-			
-			if(accessMergeInForm.getCquantity() <= accessid.getCquantity()){
-			material.setQuantity(material.getQuantity() + accessMergeInForm.getCquantity());
-			materialDao.merge(material);
-			
-			Access access = new Access();
-			access.init();
-			BeanUtils.copyProperties(accessMergeInForm, access, Access.class);
-			access.setPhoto(FileUtils.getFileNameAndSaveFile(accessMergeInForm.getAccessfile()));
-			access.setCquantity(accessMergeInForm.getCquantity());
-			access.setOperationstatus(accessMergeInForm.getOperationstatus());
-			access.setMaterial(material);
-			access.setUser(user);
-			accessDao.save(access);
-			
-			}
-		} catch (ServiceException e) {
-			throw e;
-		}
-	}*/
-	
 	public void MaterialBorrow(ApplyAddForm applyAddForm,String seuserid){
 	try {			
 		User user = userdao.findById(seuserid);
@@ -242,34 +196,6 @@ public class AccessService {
 		throw e;
 	}
 }
-	
-/*	public void MaterialBorrow(Confirm borrowForm,AccessAddForm accessAddForm,String seuserid){
-		try {			
-			User user = userdao.findById(seuserid);
-			
-			for (Confirms materials : borrowForm.getMaterials()) {
-				if (StringUtils.isNotBlank(materials.getId())) {
-					Material material = materialDao.findById(materials.getId());
-					material.setStatus(borrowForm.getStatus());
-					if(material.getQuantity() >= 1){
-					material.setQuantity(material.getQuantity() - materials.getCquantity());
-					materialDao.merge(material);
-					
-					Access access = new Access();
-					access.init();
-					BeanUtils.copyProperties(accessAddForm, access, Access.class);
-					access.setPhoto(FileUtils.getFileNameAndSaveFile(accessAddForm.getAccessfile()));
-					access.setCquantity(materials.getCquantity());
-					access.setMaterial(material);
-					access.setUser(user);
-					accessDao.save(access);
-				}
-				}
-			}
-		} catch (ServiceException e) {
-			throw e;
-		}
-	}*/
 	
 	public MyPage<Access> findByUserMaterial(String seuserid,User user,String keyword,int page,int pagesize){
 		try {

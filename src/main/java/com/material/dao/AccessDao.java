@@ -1,7 +1,5 @@
 package com.material.dao;
 
-
-
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Disjunction;
