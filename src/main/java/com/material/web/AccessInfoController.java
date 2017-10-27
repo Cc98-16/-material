@@ -74,7 +74,7 @@ public class AccessInfoController extends BaseController{
 	}
 	
 	/**
-	 * 
+	 * 管理员确认后新增一条编码记录
 	 * 
 	 * @param accessoutForm
 	 * @param id
@@ -89,23 +89,37 @@ public class AccessInfoController extends BaseController{
 		accessService.AccessOut(accessoutForm,id,aid,uid,seuserid,status);
 		return Result.toUrl("/applyadmin");	
 	}
-	
+	/**
+	 * 通过申请后新增一条记录
+	 * @param id
+	 */
 	@PostMapping(value = "/accesssava")
 	@ResponseBody
-	public Map<String,Object> BooksDelete(String id){
+	public Map<String,Object> Accesssave(String id){
 		String operationstatus = "confirm";
 		Apply apply = applyService.findById(seuserid,id);
 		accessService.AccessSave(seuserid,apply,operationstatus);
 		return Result.success();
 	}
-	
+	/**
+	 * 管理员同意申请者归还
+	 * @param accessinForm
+	 * @param id
+	 * @param aid
+	 * @return
+	 */
 	@ResponseBody
 	@PostMapping(value ="/apply/{id}/{aid}/in")
 	public Map<String,Object> Accessin(@Valid AccessInForm accessinForm,@PathVariable String id,@PathVariable String aid){
 		accessService.AccessIn(accessinForm,id,aid,seuserid);
 		return Result.toUrl("/applyadmin");	
 	}
-	
+	/**
+	 * 提交材料照片
+	 * @param accessFireForm
+	 * @param id
+	 * @return
+	 */
 	@ResponseBody
 	@PostMapping(value ="/accessfile")
 	public Map<String,Object> AccessFire(@Valid AccessFileForm accessFireForm,String id){
